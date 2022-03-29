@@ -1,4 +1,5 @@
 import React from 'react';
+import './Button.css';
 
 /**
  * @typedef Props
@@ -17,7 +18,7 @@ type Props = {
  * @param Props
  */
 const Button = ({ onClick, children, type = 'button' }: Props) => (
-  <button type={type} className="Button" onClick={onClick}>
+  <button data-testid="Button" type={type} className="Button" onClick={onClick}>
     {children}
   </button>
 );
