@@ -14,6 +14,10 @@ type Props = {
  * Custom form component
  * @param Props
  */
-const Form = ({ onSubmit, children }: Props) => <form onSubmit={onSubmit}>{children}</form>;
+const Form = ({ onSubmit, children }: Props) => (
+  <form data-testid="Form" onSubmit={onSubmit}>
+    {children}
+  </form>
+);
 
 export default Form;
