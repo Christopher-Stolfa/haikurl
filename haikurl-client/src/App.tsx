@@ -25,8 +25,10 @@ const App = () => {
     <div className="App">
       <Header />
       <Form>
-        <Input value={url} onChange={handleOnChange} />
-        <Button type="submit">Submit</Button>
+        <div className="App-Input-Group">
+          <Input value={url} onChange={handleOnChange} />
+          <Button type="submit">Submit</Button>
+        </div>
       </Form>
     </div>
   );
