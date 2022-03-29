@@ -5,6 +5,9 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  moduleNameMapper: {
+    '\\.(css|less)$': 'identity-obj-proxy',
+  },
   setupFilesAfterEnv: ['./jest-setup.ts'],
   testEnvironment: 'jsdom',
 };
