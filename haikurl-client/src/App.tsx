@@ -26,7 +26,7 @@ const App = () => {
       <Header />
       <Form>
         <Input value={url} onChange={handleOnChange} />
-        <Button>Submit</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     </div>
   );
