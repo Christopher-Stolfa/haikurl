@@ -1,4 +1,5 @@
 import React from 'react';
+import './Form.css';
 
 /**
  * @typedef Props
@@ -15,7 +16,7 @@ type Props = {
  * @param Props
  */
 const Form = ({ onSubmit, children }: Props) => (
-  <form data-testid="Form" onSubmit={onSubmit}>
+  <form className="Form" data-testid="Form" onSubmit={onSubmit}>
     {children}
   </form>
 );
