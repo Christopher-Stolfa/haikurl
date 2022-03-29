@@ -15,8 +15,8 @@ type Props = {
  * Custom input component
  * @param Props
  */
-const Input = ({ value = '', onChange }: Props) => (
-  <input type="text" className="Input" value={value} onChange={onChange} />
+const Input = ({ value, onChange }: Props) => (
+  <input data-testid="Input" type="url" className="Input" value={value} onChange={onChange} />
 );
 
 export default Input;
