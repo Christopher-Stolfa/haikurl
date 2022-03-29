@@ -3,7 +3,7 @@ import './Input.css';
 
 /**
  * @typedef Props
- * @prop {React.ReactNode} value - The value of the input field
+ * @prop {string} value - The value of the input field
  * @prop {(event: React.ChangeEvent<HTMLInputElement>)=>void} onChange - Callback that handles input field events
  */
 type Props = {
