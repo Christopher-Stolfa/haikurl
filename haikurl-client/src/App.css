@@ -8,14 +8,25 @@
   color: white;
   width: 400px;
   height: 200px;
+  padding: 3px;
 }
 
 .App-Input-Group {
   display: flex;
   align-items: stretch;
   flex-direction: row;
+  gap: 3px;
 }
 
-p {
-  font-size: 2rem;
+.App-Output-Group {
+  position: relative;
+  background-color: rgb(233, 230, 230);
+  height: 100%;
+  width: 100%;
+}
+
+.App-Bottom-Right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
