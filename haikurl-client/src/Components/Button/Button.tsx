@@ -15,7 +15,7 @@ type Props = {
 
 /**
  * Custom button component
- * @param Props
+ * @param {Props} props
  */
 const Button = ({ onClick, children, type = 'button' }: Props) => (
   <button data-testid="Button" type={type} className="Button" onClick={onClick}>

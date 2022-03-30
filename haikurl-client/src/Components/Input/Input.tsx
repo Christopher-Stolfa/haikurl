@@ -13,7 +13,7 @@ type Props = {
 
 /**
  * Custom input component
- * @param Props
+ * @param {Props} props
  */
 const Input = ({ value, onChange }: Props) => (
   <input data-testid="Input" type="url" className="Input" value={value} onChange={onChange} />

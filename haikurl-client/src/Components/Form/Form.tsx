@@ -13,7 +13,7 @@ type Props = {
 
 /**
  * Custom form component
- * @param Props
+ * @param {Props} props
  */
 const Form = ({ onSubmit, children }: Props) => (
   <form className="Form" data-testid="Form" onSubmit={onSubmit}>
