@@ -1,0 +1,10 @@
+.TextField {
+  font-size: 1rem;
+  color: black;
+  overflow-wrap: break-word;
+}
+
+p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
