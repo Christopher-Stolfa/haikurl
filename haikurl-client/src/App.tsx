@@ -51,7 +51,7 @@ const App = () => {
   /**
    * Copies the haiku data object from state to the clipboard.
    */
-  const handleCopyButton = () => navigator.clipboard.writeText(haikurl);
+  const handleCopyButton = () => navigator.clipboard.writeText(process.env.REACT_APP_API_URL + haikurl);
 
   return (
     <div className="App">
