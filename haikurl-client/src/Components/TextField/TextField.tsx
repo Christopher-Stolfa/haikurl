@@ -4,18 +4,21 @@ import './TextField.css';
 /**
  * @typedef Props
  * @prop {string} haikurl - Haiku that redirects to the url associated with it
+ * @prop {string} error - Error message
  */
 type Props = {
   haikurl: string;
+  error: string;
 };
 
 /**
  * TextField component where the haiku is rendered
  * @param {Props} Props
  */
-const TextField = ({ haikurl }: Props) => (
+const TextField = ({ haikurl, error }: Props) => (
   <div className="TextField">
-    {haikurl.length > 0 && (
+    {error && <p>{error}</p>}
+    {haikurl && !error && (
       <>
         <p key="api-url">{process.env.REACT_APP_API_URL}</p>
         {haikurl.split('|||').map((haiku) => (
