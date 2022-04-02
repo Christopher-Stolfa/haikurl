@@ -39,7 +39,7 @@ const App = () => {
     event.preventDefault();
     axios
       .post(process.env.REACT_APP_API_URL + 'url', {
-        url: removeHttp(url),
+        url,
       })
       .then(({ data: { haiku } }) => {
         setError('');
@@ -52,13 +52,6 @@ const App = () => {
    * Copies the haiku data object from state to the clipboard.
    */
   const handleCopyButton = () => navigator.clipboard.writeText(haikurl);
-
-  /**
-   * The database doesn't allow http or https
-   * @param {string} currentUrl - The current non modified url
-   * @returns {string} - The url with http or https removed
-   */
-  const removeHttp = (currentUrl: string) => currentUrl.replace(/^https?:\/\//, '');
 
   return (
     <div className="App">
