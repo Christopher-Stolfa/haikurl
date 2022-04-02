@@ -1,5 +1,6 @@
 /*global chrome*/
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './App.css';
 import Input from './Components/Input/Input';
 import Header from './Components/Header/Header';
@@ -9,7 +10,19 @@ import TextField from './Components/TextField/TextField';
 
 const App = () => {
   const [url, setUrl] = useState<string>('');
-  const [haikuData, setHaikuData] = useState({ urlStart: '', lineOne: '', lineTwo: '', lineThree: '', urlEnd: '' });
+  const [haikurl, setHaikurl] = useState('');
+
+  /**
+   * On mount, check if there's chrome tabs. If there are tabs, grab the current opened tab and set it to state.
+   */
+  useEffect(() => {
+    const queryInfo = { active: true, lastFocusedWindow: true };
+    chrome.tabs &&
+      chrome.tabs.query(queryInfo, (tabs) => {
+        const tabUrl: string = tabs[0].url || '';
+        setUrl(tabUrl);
+      });
+  }, []);
 
   /**
    * If a user manually changes the value of the input fields
@@ -24,36 +37,26 @@ const App = () => {
    */
   const handleOnSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    setHaikuData({
-      urlStart: 'https://haikurl.com/',
-      lineOne: "When you're the president",
-      lineTwo: 'of America your job is to',
-      lineThree: 'keep people happy',
-      urlEnd: '.com',
-    });
+    axios
+      .post(process.env.REACT_APP_API_URL + 'url', {
+        url: removeHttp(url),
+      })
+      .then(({ data: { haiku } }) => setHaikurl(haiku))
+      .catch((error) => console.log(error));
   };
 
   /**
    * NOTE: When the backend is completed, it should handle the text replacement
    * Copies the haiku data object from state to the clipboard.
    */
-  const handleCopyButton = () => {
-    const { urlStart, lineOne, lineTwo, lineThree, urlEnd } = haikuData;
-    const haikurl = `${urlStart}${lineOne}-${lineTwo}-${lineThree}${urlEnd}`.replace(/\s+/g, '-').toLowerCase();
-    navigator.clipboard.writeText(haikurl);
-  };
+  const handleCopyButton = () => navigator.clipboard.writeText(haikurl);
 
   /**
-   * On mount, check if there's chrome tabs. If there are tabs, grab the current opened tab and set it to state.
+   * The database doesn't allow http or https
+   * @param {string} currentUrl - The current non modified url
+   * @returns {string} - The url with http or https removed
    */
-  useEffect(() => {
-    const queryInfo = { active: true, lastFocusedWindow: true };
-    chrome.tabs &&
-      chrome.tabs.query(queryInfo, (tabs) => {
-        const tabUrl: string = tabs[0].url || '';
-        setUrl(tabUrl);
-      });
-  }, []);
+  const removeHttp = (currentUrl: string) => currentUrl.replace(/^https?:\/\//, '');
 
   return (
     <div className="App">
@@ -64,7 +67,7 @@ const App = () => {
           <Button type="submit">Submit</Button>
         </div>
         <div className="App-Output-Group">
-          <TextField {...haikuData} />
+          <TextField haikurl={haikurl} />
           <div className="App-Bottom-Right">
             <Button onClick={handleCopyButton} type="button">
               Copy
