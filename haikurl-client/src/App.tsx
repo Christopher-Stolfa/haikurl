@@ -31,7 +31,6 @@ const App = () => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setUrl(event.target.value);
 
   /**
-   * NOTE: At the moment, this stores dummy data for testing purposes
    * Submits the url to the backend, receives haikudata and sets it to state
    * @param {React.SyntheticEvent} event
    */
@@ -46,7 +45,6 @@ const App = () => {
   };
 
   /**
-   * NOTE: When the backend is completed, it should handle the text replacement
    * Copies the haiku data object from state to the clipboard.
    */
   const handleCopyButton = () => navigator.clipboard.writeText(haikurl);
