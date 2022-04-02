@@ -11,6 +11,7 @@ import TextField from './Components/TextField/TextField';
 const App = () => {
   const [url, setUrl] = useState<string>('');
   const [haikurl, setHaikurl] = useState('');
+  const [error, setError] = useState('');
 
   /**
    * On mount, check if there's chrome tabs. If there are tabs, grab the current opened tab and set it to state.
@@ -40,8 +41,11 @@ const App = () => {
       .post(process.env.REACT_APP_API_URL + 'url', {
         url: removeHttp(url),
       })
-      .then(({ data: { haiku } }) => setHaikurl(haiku))
-      .catch((error) => console.log(error));
+      .then(({ data: { haiku } }) => {
+        setError('');
+        setHaikurl(haiku);
+      })
+      .catch((error) => setError(error.message));
   };
 
   /**
@@ -65,7 +69,7 @@ const App = () => {
           <Button type="submit">Submit</Button>
         </div>
         <div className="App-Output-Group">
-          <TextField haikurl={haikurl} />
+          <TextField error={error} haikurl={haikurl} />
           <div className="App-Bottom-Right">
             <Button onClick={handleCopyButton} type="button">
               Copy
