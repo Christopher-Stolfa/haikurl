@@ -8,3 +8,9 @@ p {
   margin-block-start: 0px;
   margin-block-end: 0px;
 }
+
+.TextField-ErrorBox {
+  background-color: #ffcccc;
+  color: #a50e0e;
+  font-weight: bold;
+}
