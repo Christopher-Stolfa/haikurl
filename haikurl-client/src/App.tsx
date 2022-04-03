@@ -42,10 +42,10 @@ const App = () => {
         url,
       })
       .then(({ data: { haiku } }) => {
-        setError('');
+        error && setError('');
         setHaikurl(haiku);
       })
-      .catch((error) => setError(error.message));
+      .catch((error) => setError(error.response.data.message || 'server error'));
   };
 
   /**
