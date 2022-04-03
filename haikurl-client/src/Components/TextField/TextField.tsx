@@ -17,7 +17,11 @@ type Props = {
  */
 const TextField = ({ haikurl, error }: Props) => (
   <div className="TextField">
-    {error && <p>{error}</p>}
+    {error && (
+      <div className="TextField-ErrorBox">
+        <p>Error: {error}</p>
+      </div>
+    )}
     {haikurl && !error && (
       <>
         <p key="api-url">{process.env.REACT_APP_API_URL}</p>
