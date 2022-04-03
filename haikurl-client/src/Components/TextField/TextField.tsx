@@ -28,7 +28,7 @@ const TextField = ({ haikurl, error }: Props) => (
         {haikurl.split('|||').map((haiku) => (
           <p key={haiku}>
             {haiku}
-            {haiku.length > 0 && '|||'}
+            {haiku && '|||'}
           </p>
         ))}
       </>
