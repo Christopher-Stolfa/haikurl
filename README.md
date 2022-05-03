@@ -36,7 +36,8 @@
   <h3 align="center">Haikurl</h3>
 
   <p align="center">
-    Note: This project is currently a work in progress, this readme is boilerplate.
+    Chrome plugin that generates a URL for you but in the form of a haiku.
+    (Note: This project is currently a work in progress, this readme is boilerplate.)
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
